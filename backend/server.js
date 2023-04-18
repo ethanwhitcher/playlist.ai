@@ -1,13 +1,17 @@
+import bodyParser from "body-parser";
 import express from "express";
 const app = express();
 import { createServer } from "http";
+import { generatePlaylist } from "./gpt.js";
 
-const server = createServer((req, res) => {
-    res.end("This is my response");
-});
+app.use(bodyParser.json());
 
 app.get("/api", (req, res) => {
     res.send("This is the response");
+});
+
+app.post("/gpt", async (req, res) => {
+    res.json(await generatePlaylist(req.body));
 });
 
 app.listen(3000, () => {
