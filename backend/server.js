@@ -9,7 +9,7 @@ const server = createServer((req, res) => {
 
 app.get("/api", (req, res) => {
     res.send("This is the response");
-    var accessToken = spotify();
+    spotify();
 });
 
 app.listen(3000, () => {
