@@ -1,13 +1,17 @@
+import bodyParser from "body-parser";
 import express from "express";
 const app = express();
 import { createServer } from "http";
+import { spotify } from "./spotify.js";
 
 const server = createServer((req, res) => {
     res.end("This is my response");
 });
 
-app.get("/api", (req, res) => {
-    res.send("This is the response");
+app.use(bodyParser.json());
+
+app.get("/search", async (req, res) => {
+    res.json(await spotify(req.body.query, req.body.limit));
 });
 
 app.listen(3000, () => {
