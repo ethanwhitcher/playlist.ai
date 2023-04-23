@@ -10,9 +10,7 @@ const server = createServer((req, res) => {
 
 app.use(bodyParser.json());
 
-app.get("/api", async (req, res) => {
-    // res.send("This is the response");
-    //spotify();
+app.get("/search", async (req, res) => {
     res.json(await spotify(req.body.query, req.body.limit));
 });
 
