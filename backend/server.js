@@ -1,3 +1,4 @@
+import bodyParser from "body-parser";
 import express from "express";
 const app = express();
 import { createServer } from "http";
@@ -7,9 +8,12 @@ const server = createServer((req, res) => {
     res.end("This is my response");
 });
 
-app.get("/api", (req, res) => {
-    res.send("This is the response");
-    spotify();
+app.use(bodyParser.json());
+
+app.get("/api", async (req, res) => {
+    // res.send("This is the response");
+    //spotify();
+    res.json(await spotify(req.body.query, req.body.limit));
 });
 
 app.listen(3000, () => {
