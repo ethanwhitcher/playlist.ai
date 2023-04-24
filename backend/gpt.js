@@ -1,5 +1,6 @@
 import dotenv from "dotenv";
 import { Configuration, OpenAIApi } from "openai";
+import { spotify } from "./spotify.js";
 
 dotenv.config();
 
@@ -18,13 +19,13 @@ function generatePrompt(songs, length = 10) {
 }
 
 function parseResponse(response) {
-    return response
-        .match(/(?<=\d+\.)(.+) - (.+)/gim)
-        .map((song) => song.trim())
-        .map((song) => {
-            const [title, artist] = song.split(" - ");
-            return { title, artist };
-        });
+    return Promise.all(
+        response
+            .match(/(?<=\d+\.)(.+) - (.+)/gim)
+            .map((song) => song.trim())
+            .map((song) => spotify(song, 1))
+            .map(async (res) => (await res)[0])
+    );
 }
 
 export async function generatePlaylist(songs) {
