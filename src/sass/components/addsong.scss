@@ -1,9 +1,7 @@
 @use "../variables" as *;
 
 .addsong {
-    font: inherit;
-    font-weight: bold;
-
+    
     border: 5px dashed $darkgrey;
     border-radius: 14px;
     border-spacing: 5px;
@@ -15,10 +13,9 @@
     justify-content: center;
     gap: 0.45rem;
     aspect-ratio: 1/1;
- 
-.button {
-    width: 230px;
-    height: 60px;
-}
 
+    .button {
+        width: 230px;
+        height: 60px;
+    }
 }
