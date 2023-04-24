@@ -2,3 +2,10 @@
 @forward "./components/albumcover.scss";
 @forward "./components/button.scss";
 @forward "./components/search.scss";
+@forward "./components/addsong.scss";
+
+#root {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
