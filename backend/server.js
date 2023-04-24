@@ -3,15 +3,16 @@ import express from "express";
 const app = express();
 import { createServer } from "http";
 import { spotify } from "./spotify.js";
-
-const server = createServer((req, res) => {
-    res.end("This is my response");
-});
+import { generatePlaylist } from "./gpt.js";
 
 app.use(bodyParser.json());
 
 app.get("/search", async (req, res) => {
     res.json(await spotify(req.body.query, req.body.limit));
+});
+
+app.post("/gpt", async (req, res) => {
+    res.json(await generatePlaylist(req.body));
 });
 
 app.listen(3000, () => {
