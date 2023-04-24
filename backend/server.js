@@ -1,13 +1,24 @@
+import bodyParser from "body-parser";
 import express from "express";
+import cors from "cors";
 const app = express();
 import { createServer } from "http";
+import { spotify } from "./spotify.js";
+import { generatePlaylist } from "./gpt.js";
 
-const server = createServer((req, res) => {
-    res.end("This is my response");
+app.use(bodyParser.json());
+app.use(
+    cors({
+        origin: "http://localhost:5173",
+    })
+);
+
+app.get("/search", async (req, res) => {
+    res.json(await spotify(req.query.q, req.query.limit));
 });
 
-app.get("/api", (req, res) => {
-    res.send("This is the response");
+app.post("/gpt", async (req, res) => {
+    res.json(await generatePlaylist(req.body));
 });
 
 app.listen(3000, () => {
