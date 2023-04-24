@@ -2,20 +2,15 @@
 
 
 .button {
-    font: {
-        family: $font-family;
-        size: 22px;
-        weight: bold;
-    }
+    font: inherit;
+    font-weight: bold;
     
     border: none;
     outline: none;
     color: $white;
+    padding: 1rem 1.7rem;
     background-color: $darkgrey;
-    height: 60px;
-    width: 230px;
     border-radius: 50px;
-    margin: 20px 20px;
     transition: scale 0.2s linear;
     display: flex;
     align-items: center;

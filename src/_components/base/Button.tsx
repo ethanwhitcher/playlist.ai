@@ -1,11 +1,15 @@
-export default function Button(props) {
-    
-    return (
-            <button className={`button ${props.variant}`} onClick={props.onClick} >
-                <img src={props.icon}></img>
-                {props.title}
-            </button>
-    );
+type ButtonProps = {
+    variant: string;
+    onClick: () => void;
+    icon?: string;
+    title: string;
 };
 
-
+export default function Button({ variant, onClick, icon, title }: ButtonProps) {
+    return (
+        <button className={`button ${variant}`} onClick={onClick}>
+            {icon && <img src={icon}></img>}
+            {title}
+        </button>
+    );
+}
