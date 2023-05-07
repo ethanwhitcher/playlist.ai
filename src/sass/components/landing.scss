@@ -1,0 +1,38 @@
+@use "../variables" as *;
+
+.landing {
+    overflow-x: hidden;
+
+    .button {
+        width: 230px;
+        height: 60px;
+        margin: 20px;
+        display: flex;
+
+    }
+ 
+}
+
+.sharebtn {
+    position: relative;
+    left: 73rem;
+    
+}
+
+.genbtn {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.container {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+    
+}   
+
+
+
