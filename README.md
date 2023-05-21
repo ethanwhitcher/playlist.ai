@@ -14,6 +14,6 @@
 - Spotify API
 
 ## Collaborators
-- Ethan Whitcher ([@ethanwhitcher](https://github.com/ethanwhitcher))
-- Josh Friedman ([@Jwiggiff](https://github.com/Jwiggiff))
-- Lauren Lidhar ([@laurenlidhar](https://github.com/laurenlidhar))
+- [Ethan Whitcher](https://github.com/ethanwhitcher) (Backend)
+- [Josh Friedman](https://github.com/Jwiggiff) (Full Stack)
+- [Lauren Lidhar](https://github.com/laurenlidhar) (Frontend)
