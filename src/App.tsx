@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useRef, useState } from "react";
 import Search from "./_components/search/Search";
 import GeneratedPlaylist from "./_components/GeneratedPlaylist";
 import { Playlist, Song } from "./utils/types";
@@ -15,6 +15,7 @@ export default function App() {
     const selectedSongsState = useState<Song[]>([]);
     const [playlist, setPlaylist] = useState<Playlist | null>(null);
     const [loading, setLoading] = useState(false);
+    const playlistRef = useRef<HTMLElement>(null);
 
     const generate = async () => {
         setLoading(true);
@@ -47,12 +48,20 @@ export default function App() {
         setLoading(false);
     };
 
+    useEffect(() => {
+        if (playlist != null) {
+            playlistRef.current?.scrollIntoView();
+        }
+    }, [playlist]);
+
     return (
         <SelectedSongs.Provider value={selectedSongsState}>
             {loading && <Loading />}
             <Header />
             <Landing onClick={generate} />
-            {playlist && <GeneratedPlaylist playlist={playlist} />}
+            {playlist && (
+                <GeneratedPlaylist ref={playlistRef} playlist={playlist} />
+            )}
         </SelectedSongs.Provider>
     );
 }

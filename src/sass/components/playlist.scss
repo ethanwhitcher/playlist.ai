@@ -4,7 +4,8 @@
     display: grid;
     place-items: center;
     width: clamp(20rem, 80vw, 100rem);
-    margin: 2rem auto;
+    margin: 0 auto;
+    padding-block: 2rem;
     min-height: 100vh;
 
     .playlist {
@@ -27,7 +28,7 @@
                 line-height: 1.25;
 
                 h2 {
-                    font-size: 3em;
+                    text-transform: capitalize;
                 }
 
                 p {

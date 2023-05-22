@@ -1,3 +1,4 @@
+import { forwardRef } from "react";
 import { Playlist } from "../utils/types";
 import PlaylistHeader from "./playlist/PlaylistHeader";
 import PlaylistTable from "./playlist/PlaylistTable";
@@ -5,11 +6,12 @@ import PlaylistTable from "./playlist/PlaylistTable";
 type GeneratedPlaylistProps = {
     playlist: Playlist;
 };
-export default function GeneratedPlaylist({
-    playlist,
-}: GeneratedPlaylistProps) {
+export default forwardRef(function GeneratedPlaylist(
+    { playlist }: GeneratedPlaylistProps,
+    ref: React.Ref<HTMLElement>
+) {
     return (
-        <section id="generatedPlaylist">
+        <section ref={ref} id="generatedPlaylist">
             <div className="playlist">
                 <PlaylistHeader
                     title={playlist.title}
@@ -20,4 +22,4 @@ export default function GeneratedPlaylist({
             </div>
         </section>
     );
-}
+});
