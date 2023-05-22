@@ -1,10 +1,9 @@
 @use "../variables" as *;
 
-
 .button {
     font: inherit;
     font-weight: bold;
-    
+
     border: none;
     outline: none;
     color: $white;
@@ -16,15 +15,17 @@
     align-items: center;
     justify-content: center;
     gap: 0.45rem;
-    
+    cursor: pointer;
+
     &.primary {
         background-color: $green;
     }
-    &>secondary {
+    & > secondary {
         background-color: $lightgrey;
     }
 
-    &:hover, &:focus-visible {
+    &:hover,
+    &:focus-visible {
         scale: 1.04;
         // transform scale gets bigger - done
     }
@@ -34,8 +35,21 @@
         // dim filter property or darker colour bkg - done
     }
 
+    &.disabled {
+        opacity: 0.5;
+        pointer-events: none;
+
+        &:hover,
+        &:focus-visible {
+            scale: 1;
+        }
+
+        &:active {
+            filter: brightness(100%);
+        }
+    }
+
     img {
         height: 1em;
     }
-
 }

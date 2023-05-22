@@ -13,5 +13,7 @@ export const durationToString = (duration: number) => {
 
 export const durationToStringWithColon = (duration: number) => {
     let { hrs, mins, secs } = durationToTime(duration);
-    return hrs > 0 ? `${hrs}:${mins}:${secs}` : `${mins}:${secs}`;
+    return hrs > 0
+        ? `${hrs}:${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`
+        : `${mins}:${secs.toString().padStart(2, "0")}`;
 };

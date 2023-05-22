@@ -1,8 +1,10 @@
 @use "../variables" as *;
 
 .search {
+    position: absolute;
+    top: 90%;
+    z-index: 99;
     width: clamp(15rem, 20vw, 30rem);
-    position: relative;
 
     input {
         border: none;
@@ -19,7 +21,7 @@
         width: calc(100% - 1rem);
         margin-inline: 0.5rem;
         list-style: none;
-        max-height: 20em;
+        max-height: 15em;
         overflow-y: auto;
         border-radius: 0 0 8px 8px;
         background-color: $black;

@@ -1,8 +1,14 @@
 import { ChangeEvent, useRef, useState } from "react";
 import SearchResult, { SearchResultProps } from "./SearchResult";
+import { Song } from "../../utils/types";
 
-export default function Search() {
-    const [results, setResults] = useState<SearchResultProps[]>([]);
+type SearchProps = {
+    isOpen: boolean;
+    onSelect: (song: Song) => void;
+};
+
+export default function Search({ isOpen, onSelect }: SearchProps) {
+    const [results, setResults] = useState<Song[]>([]);
     const inputRef = useRef<HTMLInputElement>(null);
 
     const search = ({
@@ -18,7 +24,10 @@ export default function Search() {
     };
 
     return (
-        <div className="search">
+        <div
+            className="search"
+            style={isOpen ? { display: "block" } : { display: "none" }}
+        >
             <input
                 ref={inputRef}
                 type="text"
@@ -27,7 +36,13 @@ export default function Search() {
             />
             <ul className="search__results">
                 {results.length > 0 ? (
-                    results.map((result) => <SearchResult {...result} />)
+                    results.map((result, i) => (
+                        <SearchResult
+                            key={i}
+                            {...result}
+                            onClick={() => onSelect(result)}
+                        />
+                    ))
                 ) : (
                     <li className="search__results__no-results">
                         {inputRef.current && inputRef.current.value.length > 3

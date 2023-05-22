@@ -4,14 +4,16 @@ export type SearchResultProps = {
     album: {
         image: string;
     };
+    onClick: () => void;
 };
 export default function SearchResult({
     title,
     artist,
     album,
+    onClick,
 }: SearchResultProps) {
     return (
-        <li className="search__result">
+        <li className="search__result" onClick={onClick}>
             <img src={album.image} alt={title} />
             <div className="search__result__info">
                 <h3>{title}</h3>
