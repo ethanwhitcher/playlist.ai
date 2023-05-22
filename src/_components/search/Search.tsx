@@ -1,4 +1,4 @@
-import { ChangeEvent, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import SearchResult, { SearchResultProps } from "./SearchResult";
 import { Song } from "../../utils/types";
 
@@ -22,6 +22,12 @@ export default function Search({ isOpen, onSelect }: SearchProps) {
                 .catch((err) => console.error(err));
         }
     };
+
+    useEffect(() => {
+        if (isOpen) {
+            inputRef.current?.focus();
+        }
+    }, [isOpen]);
 
     return (
         <div
