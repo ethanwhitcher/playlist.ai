@@ -8,7 +8,7 @@ export type Song = {
     title: string;
     artist: string;
     album: {
-        title: string;
+        name: string;
         image: string;
     };
     duration: number;

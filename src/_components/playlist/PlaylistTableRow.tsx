@@ -21,7 +21,7 @@ export default function PlaylistTableRow({
                     </div>
                 </div>
             </td>
-            <td>{song.album.title}</td>
+            <td>{song.album.name}</td>
             <td>{durationToStringWithColon(song.duration)}</td>
         </tr>
     );
