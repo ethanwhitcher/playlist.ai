@@ -27,8 +27,13 @@ async function parseResponse(response) {
             .map(async (res) => (await res)[0])
     );
 
+    console.log(response);
+
     return {
-        title: response.match(/(?<=Playlist name: )(.+)/gim)[0].trim(),
+        title: response
+            .match(/(?<=Playlist name: )(.+)/gim)[0]
+            .trim()
+            .replace(".", ""),
         songs: await songs,
     };
 }
