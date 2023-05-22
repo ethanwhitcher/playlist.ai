@@ -11,21 +11,26 @@ const openai = new OpenAIApi(config);
 
 function generatePrompt(songs, length = 10) {
     return (
-        `Generate a playlist of ${length} songs for me based on these ${songs.length} songs that I like:\n\n` +
+        `Generate a playlist of ${length} songs for me based on these ${songs.length} songs that I like, and at the end, write a name for the playlist in the format "playlist name: \$\{NAME\}":\n\n` +
         songs
             .map((song, i) => `${i + 1}. ${song.title} - ${song.artist}`)
             .join("\n  ")
     );
 }
 
-function parseResponse(response) {
-    return Promise.all(
+async function parseResponse(response) {
+    const songs = Promise.all(
         response
             .match(/(?<=\d+\.)(.+) - (.+)/gim)
             .map((song) => song.trim())
             .map((song) => spotify(song, 1))
             .map(async (res) => (await res)[0])
     );
+
+    return {
+        title: response.match(/(?<=Playlist name: )(.+)/gim)[0].trim(),
+        songs: await songs,
+    };
 }
 
 export async function generatePlaylist(songs) {

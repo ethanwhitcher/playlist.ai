@@ -54,7 +54,7 @@ const search = async (token, searchQuery, limit) => {
             searchParams
         );
         var data = await songs.json();
-        console.log(data);
+        // console.log(data);
 
         // map the song title, artist, album name, album image, duration
         songs = data.tracks.items.map((item) => ({

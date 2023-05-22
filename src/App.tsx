@@ -32,14 +32,17 @@ export default function App() {
         })
             .then((res) => res.json())
             .then((res) => ({
-                title: "Playlist",
-                image: "https://via.placeholder.com/200",
-                duration: res.reduce(
+                ...res,
+                duration: res.songs.reduce(
                     (dur: number, song: Song) => dur + song.duration,
                     0
                 ),
-                songs: res,
-            }));
+            }))
+            .catch((err) => {
+                console.error(err);
+                alert("Something went wrong, please try again later");
+                return null;
+            });
         setPlaylist(pl);
         setLoading(false);
     };
