@@ -1,6 +1,5 @@
 export type Playlist = {
     title: string;
-    image: string;
     duration: number;
     songs: Song[];
 };

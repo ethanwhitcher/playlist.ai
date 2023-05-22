@@ -12,7 +12,6 @@ export default function GeneratedPlaylist({
         <section id="generatedPlaylist">
             <div className="playlist">
                 <PlaylistHeader
-                    image={playlist.image}
                     title={playlist.title}
                     numSongs={playlist.songs.length}
                     duration={playlist.duration}
