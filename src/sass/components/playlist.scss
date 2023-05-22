@@ -43,8 +43,9 @@
             @media (max-width: 800px) {
                 grid-template-columns: minmax(7rem, 12rem) 1fr;
 
-                img {
-                    grid-row: span 2;
+                .button {
+                    grid-column: span 2;
+                    width: 100%;
                 }
             }
         }
