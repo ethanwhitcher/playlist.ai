@@ -24,6 +24,7 @@ export default function PlaylistHeader({
                 </p>
             </div>
             <Button
+                disabled={true}
                 icon={spotifyIcon}
                 title="Add to Spotify"
                 variant="primary"
