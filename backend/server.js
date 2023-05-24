@@ -21,7 +21,7 @@ dotenv.config();
 app.use(bodyParser.json());
 app.use(
     cors({
-        origin: "http://localhost:5173",
+        origin: ["http://localhost:5173", "https://playlistai.onrender.com"],
     })
 );
 app.use(cookieParser());
@@ -70,7 +70,10 @@ app.get("/callback", function (req, res) {
             },
             headers: {
                 Authorization:
-                    "Basic " + new Buffer.from(client_id + ":" + client_secret).toString("base64"),
+                    "Basic " +
+                    new Buffer.from(client_id + ":" + client_secret).toString(
+                        "base64"
+                    ),
             },
             json: true,
         };
@@ -98,10 +101,12 @@ app.get("/callback", function (req, res) {
                         })
                 );
             } else {
-                res.redirect("/#" +
+                res.redirect(
+                    "/#" +
                         queryString.stringify({
                             error: "invalid_token",
-                        }));
+                        })
+                );
             }
         });
     } // end else statement
@@ -112,19 +117,25 @@ app.get("/refresh_token", function (req, res) {
     console.log(refresh_token);
     var authOptions = {
         url: "https://accounts.spotify.com/api/token",
-        headers: { 'Authorization': 'Basic ' + (new Buffer.from(client_id + ':' + client_secret).toString('base64')) },
-        form: {
-            grant_type: 'refresh_token',
-            refresh_token: refresh_token
+        headers: {
+            Authorization:
+                "Basic " +
+                new Buffer.from(client_id + ":" + client_secret).toString(
+                    "base64"
+                ),
         },
-        json: true
+        form: {
+            grant_type: "refresh_token",
+            refresh_token: refresh_token,
+        },
+        json: true,
     };
 
     request.post(authOptions, function (error, response, body) {
         if (!error && response.statusCode === 200) {
             var access_token = body.access_token;
             res.send({
-                'access_token': access_token
+                access_token: access_token,
             });
         }
     });
