@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import Button from "./base/Button";
 import Search from "./search/Search";
 import { SelectedSongs } from "../App";
-import { Song } from "../utils/types";
+import { Song } from "../lib/types";
 import { SearchResultProps } from "./search/SearchResult";
 
 type AddSongProps = {

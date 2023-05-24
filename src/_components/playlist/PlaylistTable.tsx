@@ -1,5 +1,5 @@
 import clockIcon from "../../assets/clock.svg";
-import { Song } from "../../utils/types";
+import { Song } from "../../lib/types";
 import PlaylistTableRow from "./PlaylistTableRow";
 
 type PlaylistTableProps = {

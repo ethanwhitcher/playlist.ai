@@ -1,5 +1,5 @@
-import { durationToStringWithColon } from "../../utils/durationStrings";
-import { Song } from "../../utils/types";
+import { durationToStringWithColon } from "../../lib/durationStrings";
+import { Song } from "../../lib/types";
 
 type PlaylistTableRowProps = {
     song: Song;

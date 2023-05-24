@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { Playlist } from "../utils/types";
+import { Playlist } from "../lib/types";
 import PlaylistHeader from "./playlist/PlaylistHeader";
 import PlaylistTable from "./playlist/PlaylistTable";
 

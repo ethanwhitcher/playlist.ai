@@ -1,4 +1,4 @@
-import { durationToString } from "../../utils/durationStrings";
+import { durationToString } from "../../lib/durationStrings";
 import Button from "../base/Button";
 import spotifyIcon from "../../assets/spotify.svg";
 import playlistImg from "../../assets/playlist.svg";
