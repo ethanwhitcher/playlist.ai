@@ -1,6 +1,7 @@
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import SearchResult, { SearchResultProps } from "./SearchResult";
-import { Song } from "../../utils/types";
+import { Song } from "../../lib/types";
+import { searchSpotify } from "../../lib/api";
 
 type SearchProps = {
     isOpen: boolean;
@@ -16,10 +17,7 @@ export default function Search({ isOpen, onSelect }: SearchProps) {
     }: ChangeEvent<HTMLInputElement>) => {
         if (value.length < 3) return setResults([]);
         else {
-            fetch(`http://localhost:3000/search?q=${value}`)
-                .then((res) => res.json())
-                .then((data) => setResults(data))
-                .catch((err) => console.error(err));
+            searchSpotify(value).then((data) => setResults(data));
         }
     };
 
