@@ -14,47 +14,25 @@ export default function Landing({ onClick }: LandingProps) {
     return (
         <div className="landing">
             <div className="container">
-                {selectedSongs[0] != undefined ? (
-                    <AlbumCover
-                        imageURL={selectedSongs[0].album.image}
-                        artistName={selectedSongs[0].artist}
-                        songName={selectedSongs[0].title}
-                    />
-                ) : (
-                    <AddSong
-                        onSelect={(song) => {
-                            selectedSongs[0] = song;
-                            setSelectedSongs(selectedSongs.slice());
-                        }}
-                    />
-                )}
-                {selectedSongs[1] != undefined ? (
-                    <AlbumCover
-                        imageURL={selectedSongs[1].album.image}
-                        artistName={selectedSongs[1].artist}
-                        songName={selectedSongs[1].title}
-                    />
-                ) : (
-                    <AddSong
-                        onSelect={(song) => {
-                            selectedSongs[1] = song;
-                            setSelectedSongs(selectedSongs.slice());
-                        }}
-                    />
-                )}
-                {selectedSongs[2] != undefined ? (
-                    <AlbumCover
-                        imageURL={selectedSongs[2].album.image}
-                        artistName={selectedSongs[2].artist}
-                        songName={selectedSongs[2].title}
-                    />
-                ) : (
-                    <AddSong
-                        onSelect={(song) => {
-                            selectedSongs[2] = song;
-                            setSelectedSongs(selectedSongs.slice());
-                        }}
-                    />
+                {Array.from({ length: 3 }, (_, i) =>
+                    selectedSongs[i] != undefined ? (
+                        <AlbumCover
+                            onRemove={() => {
+                                delete selectedSongs[i];
+                                setSelectedSongs(selectedSongs.slice());
+                            }}
+                            imageURL={selectedSongs[i].album.image}
+                            artistName={selectedSongs[i].artist}
+                            songName={selectedSongs[i].title}
+                        />
+                    ) : (
+                        <AddSong
+                            onSelect={(song) => {
+                                selectedSongs[i] = song;
+                                setSelectedSongs(selectedSongs.slice());
+                            }}
+                        />
+                    )
                 )}
             </div>
 
