@@ -14,7 +14,7 @@ export default function PlaylistTableRow({
             <td>{index}</td>
             <td>
                 <div className="title-cell">
-                    <img src={song.album.image} alt={song.album.title} />
+                    <img src={song.album.image} alt={song.album.name} />
                     <div className="song-info">
                         <h4>{song.title}</h4>
                         <p>{song.artist}</p>
