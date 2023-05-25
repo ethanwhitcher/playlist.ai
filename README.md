@@ -1,5 +1,5 @@
 # Playlist.AI
-> A website that generates a playlist based on songs that you like, using GPT and the Spotify API.
+> A website that generates a playlist based on songs that you like, using GPT and the Spotify API. Check out [here](https://playlistai.onrender.com)
 
 ## Tech Stack
 ### Frontend:
