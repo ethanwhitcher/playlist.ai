@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="src/assets/Logo.svg" />
+</p>
+
 # Playlist.AI
 > A website that generates a playlist based on songs that you like, using GPT and the Spotify API.
 
